@@ -1,1 +1,20 @@
 Likwid measures defined statistics on specfic cores.
+
+
+// perfmon_readCounters() //
+
+
+// for (int i = 0; i < topo->numHWThreads; i++) {
+		// 	double result = perfmon_getLastResult(gid, 0, i);
+		// 	printf("Instructions retired on CPU %d: %f\n", i, result);
+    	// }
+
+this loops gives a Segmentation Fault. Probably because on some of the hardWare threads I cannot call perfmon_getLastResult;
+
+when I do this for a single hardware thread it is not a problem.
+
+for example, thread 0
+
+double result = perfmon_getLastResult(gid, 0 , 0);
+
+		printf("Result of temperature is as follows: \n, %d", result)
