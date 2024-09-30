@@ -10,3 +10,24 @@ clang++ -std=c++11 -fopenmp=libomp -I./inc -O3 -I/home/pranavshaurya/annalist-ov
 clang++: error: linker command failed with exit code 1 (use -v to see invocation)
 make: *** [Makefile:7: heat] Error 1
 
+problem:: Likwid path not specified in the linking step
+
+solution::
+
+add path in the makefile
+
+LIBS = -L/usr/local/lib -llikwid
+
+include $(ANNALIST_ROOT)/include/annalist.mak
+
+TARGETS := heat sor fib test stream process
+all: clean $(TARGETS) clean-obj
+
+%: %.cpp
+		$ clang++ -std=c++11 -fopenmp=libomp -I./inc $(ANNALIST_CFLAGS) $(CFLAGS) $(ANNALIST_LDFLAGS) -o $@ $^ $(ANNALIST_LDLIBS) $(LIBS) -lm
+
+clean-obj:
+	rm -rf *.o
+
+clean:
+	rm -rf *.o $(TARGETS)
