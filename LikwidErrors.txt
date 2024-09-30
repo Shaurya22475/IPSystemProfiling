@@ -1,0 +1,12 @@
+pranavshaurya@hmaster:~/annalist-overheads/test$ make
+rm -rf *.o heat sor fib test stream process
+clang++ -std=c++11 -fopenmp=libomp -I./inc -O3 -I/home/pranavshaurya/annalist-overheads/annalist-install/include -L/home/pranavshaurya/annalist-overheads/annalist-install/lib -o heat heat.cpp  -lannalist -lm
+/usr/bin/ld: /home/pranavshaurya/annalist-overheads/annalist-install/lib/libannalist.so: undefined reference to `perfmon_init'
+/usr/bin/ld: /home/pranavshaurya/annalist-overheads/annalist-install/lib/libannalist.so: undefined reference to `perfmon_addEventSet'
+/usr/bin/ld: /home/pranavshaurya/annalist-overheads/annalist-install/lib/libannalist.so: undefined reference to `topology_init'
+/usr/bin/ld: /home/pranavshaurya/annalist-overheads/annalist-install/lib/libannalist.so: undefined reference to `perfmon_setupCounters'
+/usr/bin/ld: /home/pranavshaurya/annalist-overheads/annalist-install/lib/libannalist.so: undefined reference to `get_cpuTopology'
+/usr/bin/ld: /home/pranavshaurya/annalist-overheads/annalist-install/lib/libannalist.so: undefined reference to `perfmon_startCounters'
+clang++: error: linker command failed with exit code 1 (use -v to see invocation)
+make: *** [Makefile:7: heat] Error 1
+
